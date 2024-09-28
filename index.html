@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+      /* Add a custom background image */
+      background-image: url('background_plants.jpg');
+      background-size: cover; /* Ensures the background covers the whole page */
+      background-position: center; /* Centers the background image */
+      background-repeat: no-repeat; /* Prevents the image from repeating */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+        }
+        .box {
+          background-color: #335113;
+          padding: 40px;
+          border-radius: 40px;
+          text-align: center;
+          color: rgb(255, 255, 255);
+          width: 500px;
+        }
+      </style>
+</head>
+<body>
+    <div class="box">
+        <h3 style= "font-family: 'cursive', system-ui">Enter plant type below</h3>
+        <form>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Search plant type";>
+          </div>
+          <button type="submit" class="btn btn-light">Search</button>
+        </form>
+    <!-- Headings -->
+    <!-- <div class="display-1 text-dark p-5">
+        <h1 style="font-family: 'Lucida Handwriting', system-ui;" class="fw-bold text-warning">Hello, world!</h1> -->
+
+        <!-- Lead Headings & Alignments -->
+        <!-- <p style="font-family: 'Copperplate', system-ui;" class="fw-bold text-primary text-center">My name is Sheila :)</p> -->
+
+        <!-- 'text-center/end/start position of text'-->
+        <!-- <p class = "lead text-center text-success" style="font-family: 'Copperplate', system-ui;">My name is Sheila, again</p>
+        <p class = "lead text-end text-info" style="font-family: 'Copperplate', system-ui;">beebop beebop</p> -->
+
+    </div>
+
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form from refreshing the page
+
+            const searchQuery = document.getElementById('searchInput').value;
+
+            fetch('/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query: searchQuery })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+</script>
+</html>
+
