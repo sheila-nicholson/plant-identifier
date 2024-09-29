@@ -29,6 +29,7 @@
 </head>
 <body>
 
+    <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top"> 
         <div class="container-fluid">
           <a class="navbar-brand" href="/index">Plant Search</a>
@@ -52,16 +53,21 @@
       </nav>
 
 
+    <!-- search box -->
     <div class="box">
         <h3 style= "font-family: 'cursive', system-ui">Enter plant type below</h3>
-        <form>
+        <form id="searchForm">
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Search plant type";>
+            <input id="searchInput" type="text" class="form-control" placeholder="Search plant type";>
           </div>
           <button type="submit" class="btn btn-light">Search</button>
         </form>
     </div>
 
+    <!-- the search input is displayed -->
+    <div id="searchResult" style="margin-top: 20px; font-size: 18px; color: white;"></div>
+
+    <!-- footer - uses CSS style see /static/css/styles.css -->
     <footer id="footer">
         <h4 style="color: white; font-size: 12px;" >&copy 2024 Sheila Nicholson. All Rights Reserved</h4>
     </footer>
@@ -69,26 +75,34 @@
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+<script>
   document.getElementById('searchForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent form from refreshing the page
+              e.preventDefault(); // Prevent form from refreshing the page
 
-            const searchQuery = document.getElementById('searchInput').value;
+              const searchQuery = document.getElementById('searchInput').value;
 
-            fetch('/search', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ query: searchQuery })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        });
+              // search = keyword used for POST request 
+              fetch('/search', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ query: searchQuery })
+              })
+              //.then(response => response.json())
+              .then(response => response.text())
+              .then(data => {
+                  //console.log('Success:', data);
+                  
+                  // Display the response in the #searchResult div
+                  document.getElementById('searchResult').innerText = data;                
+              })
+              .catch((error) => {
+                  console.error('Error:', error);
+                  document.getElementById('searchResult').innerText = 'An error occurred. Please try again.';
+              });
+          });
 </script>
 </html>
