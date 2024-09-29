@@ -82,6 +82,29 @@
               e.preventDefault(); // Prevent form from refreshing the page
 
               const searchQuery = document.getElementById('searchInput').value;
+              
+              
+              // const apiKey = 'sk-hW2C66f8a767ac77e7043';
+              // const url = `https://perenual.com/api/species-list?key=${apiKey}&q=${encodeURIComponent(searchQuery)}`;
+
+              // fetch(url)
+              //   .then(response => response.json())
+              //   .then(data => {
+              //       // Assuming the API returns a list of plants
+              //       if (data && data.data && data.data.length > 0) {
+              //           const plantInfo = data.data[0]; // Get the first result
+              //           // Display the plant information
+              //           document.getElementById('searchResult').innerText = `Plant Name: ${plantInfo.common_name}, Scientific Name: ${plantInfo.scientific_name}`;
+              //       } else {
+              //           document.getElementById('searchResult').innerText = 'No results found.';
+              //       }
+              //   })
+              //   .catch((error) => {
+              //       console.error('Error:', error);
+              //       document.getElementById('searchResult').innerText = 'An error occurred. Please try again.';
+              //   });
+
+              
 
               // search = keyword used for POST request 
               fetch('/search', {
