@@ -1,7 +1,7 @@
-**Plant Identifier Project**
+## Plant Identifier Project
 This project uses the Spring Boot framework to create a local web application that allows users to search for plants by name. The application retrieves detailed plant information from the Perenual Plant API.
 
-**Installation & Setup**
+## Installation & Setup
 1. Clone the repository.
 2. Visit Perenual Plant API Docs to get an API key.
 3. Set up your environment variables:
@@ -10,19 +10,19 @@ This project uses the Spring Boot framework to create a local web application th
 PLANT_API_KEY=your-api-key-here
 ```
 
-**Running the Application via Command Line**
-## Build the Project:
+## Running the Application via Command Line
+Build the Project:
 
 ```bash
 mvn compile 
 ```
 
-## Run the Application:
+Run the Application:
 
 ```bash
 mvn exec:java
 ```
-## Terminate the Application:
+Terminate the Application:
 
 ```bash
 ctrl-c
