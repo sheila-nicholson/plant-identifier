@@ -27,14 +27,12 @@ Terminate the Application:
 ```bash
 ctrl-c
 ```
-
 Once running, open your web browser and navigate to:
 http://localhost:8080
 Search for a plant, and detailed information will be displayed. Additional features are coming soon!
 
-
-**Technologies Used**
-Java (Spring Boot)
-Perenual Plant API
-Maven for project management
-Bootstrap for frontend
+**Frameworks/Tools Used**
+- Spring Boot
+- Maven 
+- Bootstrap
+- Thymeleaf
