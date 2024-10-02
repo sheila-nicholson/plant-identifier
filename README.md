@@ -22,12 +22,8 @@ Run the Application:
 ```bash
 mvn exec:java
 ```
-Terminate the Application:
 
-```bash
-ctrl-c
-```
-Once running, open your web browser and navigate to:
+Once running, open a web browser and navigate to:
 http://localhost:8080
 Search for a plant, and detailed information will be displayed. Additional features are coming soon!
 
